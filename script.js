@@ -87,9 +87,18 @@ submit.addEventListener('click', () => {
     if (questionCount < quizDb.length) {
         loadQuestion();
     } else {
-
-        showScore.innerHTML = `<h3> Your Score is ${score}/${quizDb.length} ✌</h3>
+        if (score == 0) {
+            showScore.innerHTML = `<h3> Your Score is ${score}/${quizDb.length} 😒</h3>
+            <button class="btn" onclick="location.reload()">Play Again</button>`;
+        } else if (score >= 1 && score <= 5) {
+            showScore.innerHTML = `<h3> Your Score is ${score}/${quizDb.length} 🙂</h3>
         <button class="btn" onclick="location.reload()">Play Again</button>`;
+        } else {
+            showScore.innerHTML = `<h3> Your Score is ${score}/${quizDb.length} 🤩</h3>
+            <button class="btn" onclick="location.reload()">Play Again</button>`;
+        }
+
+
         showScore.classList.remove('scoreArea');
     }
 });
